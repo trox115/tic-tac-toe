@@ -3,7 +3,7 @@ class Board
     def initialize
         @board_numbers = [[1,2,3], [4,5,6], [7,8,9]]
         @board = [[1,2,3], [4,5,6], [7,8,9]]
-        @winning = [[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7]]
+        @winning = [[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7],[3,6,9],[1,4,7],[2,5,8]]
     end
      
     def print_board
@@ -40,6 +40,7 @@ class Board
         end
         return false
     end
+
 
     def contains_all?(a,b)
         b.uniq.all? { |x| a.count(x) >= b.count(x) }

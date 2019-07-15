@@ -4,10 +4,11 @@ class Game
     def initialize
         @board = Board.new
         @players = []
+        
+        @playermoves = [[],[]]
         @turn_toplay = 0 #it changes from 0 to 1 depending on the turn
         @symbols = ["X", "O"]
-        self.welcome
-        self.play
+        
     end
 
     def welcome
@@ -27,13 +28,23 @@ class Game
     end
     def play
         @board.print_board
+        
         while true
             puts "Turn to: #{@players[@turn_toplay]}, insert a digit"
             played = gets.chomp
             valid = @board.choose(played.to_i, @symbols[@turn_toplay])
             
             if valid
-                @board.checking             
+                @playermoves[@turn_toplay].push(played.to_i)
+                if @board.checking(@playermoves[@turn_toplay])==true
+                    puts ""
+                    puts ""
+                    puts "The winner is #{@players[@turn_toplay]}"
+                    puts ""
+                    puts ""
+                    break
+                   
+                end             
                 switch_turn
             end
         end
@@ -49,10 +60,11 @@ class Game
         turn_valid = false
         while !turn_valid
             begin
-                puts "#{@players[0]} it's your turn, insert a digit"
+                puts "#{@players[@turn_toplay]} it's your turn, insert a digit"
                 number = gets.chomp
                 if number.integer?
                     turn_valid = true
+                  
                 end
             rescue
                 turn_valid = false
@@ -63,4 +75,9 @@ class Game
     end
 end
 
-game = Game.new
+
+while true
+    game = Game.new
+game.welcome
+game.play
+end
