@@ -11,9 +11,9 @@ class Game
   end
 
   def welcome
-    puts '------------------------------------------------------------'
-    puts 'Welcome at this tic-tac-toe game, built by António Fernandes And Carlos del Real'
-    puts '------------------------------------------------------------/n'
+    puts '-----------------------------------------------------------------------------------'
+    puts 'Welcome to this tic-tac-toe game, built by António Fernandes And Carlos del Real'
+    puts '-----------------------------------------------------------------------------------'
     puts 'what is the name of player 1 ?'
     player1 = gets.chomp
     puts 'what is the name of player 2 ?'
@@ -76,8 +76,64 @@ class Game
     end
     @board.choice(number)
   end
+
+  def reset_board
+    @board.board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    @playermoves = [[], []]
+  end
 end
 
 game = Game.new
-game.welcome
-game.play
+
+sameplayers = false
+playagain = true
+
+loop do
+  if playagain == false
+    break
+  end
+
+  if sameplayers == true
+    game.reset_board
+    game.play
+  else
+    game.reset_board
+    game.welcome
+    game.play
+  end
+
+
+  ask_playagain = true
+  while ask_playagain
+    puts "Do you want to play again? Y/N"
+    playagain_ans = gets.chomp
+    if playagain_ans.upcase == "Y"
+      ask_playagain = false
+      playagain = true
+      break
+    elsif playagain_ans.upcase == "N"
+      playagain = false
+      ask_playagain = false
+      break
+    else
+      puts "Invalid Response"
+    end
+  end
+
+  ask_sameplayers = true
+  while ask_sameplayers
+    puts "Play with the same Players Y/N"
+    sameplayers_ans = gets.chomp
+    if sameplayers_ans.upcase == "Y"
+      ask_sameplayers = false
+      sameplayers = true
+      break
+    elsif sameplayers_ans.upcase == "N"
+      sameplayers = false
+      ask_sameplayers = false
+      break
+    else
+      puts "Invalid Response"
+    end
+  end
+end  
