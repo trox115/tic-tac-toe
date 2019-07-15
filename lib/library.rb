@@ -4,8 +4,6 @@ class Board
         @board_numbers = [[1,2,3], [4,5,6], [7,8,9]]
         @board = [[1,2,3], [4,5,6], [7,8,9]]
         @winning = [[1,2,3],[4,5,6],[7,8,9],[1,5,9],[3,5,7]]
-        @player1=Array.new
-        @player2=Array.new
     end
      
     def print_board
@@ -24,9 +22,11 @@ class Board
                     if @board[i][j].class == Integer
                         @board[i][j] = symbol
                         self.print_board
+                        return true
                     else
                         puts "Already Chosen"
                         self.print_board
+                        return false
                     end
                 end
             end
@@ -35,16 +35,14 @@ class Board
     def checking(ar)
         @winning.each do |x|
             if contains_all?(ar,x)
-                puts "winner"
-            else
-                puts "no"
+                return true
             end
-        
+        end
+        return false
     end
 
-end
+    def contains_all?(a,b)
+        b.uniq.all? { |x| a.count(x) >= b.count(x) }
+    end
 
-def contains_all?(a,b)
-    b.uniq.all? { |x| a.count(x) >= b.count(x) }
-end
 end
