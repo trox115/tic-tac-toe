@@ -4,7 +4,7 @@ class Game
   def initialize
     @board = Board.new
     @players = []
-
+    
     @playermoves = [[], []]
     @turn_toplay = 0 # it changes from 0 to 1 depending on the turn
     @symbols = %w[X O]
@@ -42,7 +42,13 @@ class Game
         puts ''
         puts ''
         break
-
+      elsif @board.draw==true
+        puts ''
+        puts ''
+        puts "It's a Draw"
+        puts ''
+        puts ''
+        break
       end
       switch_turn
     end
@@ -72,8 +78,8 @@ class Game
   end
 end
 
-loop do
-  game = Game.new
-  game.welcome
-  game.play
-end
+
+    game = Game.new
+    game.welcome
+    game.play
+

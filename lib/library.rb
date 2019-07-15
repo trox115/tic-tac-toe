@@ -36,9 +36,35 @@ class Board
   def checking(arr)
     @winning.each do |x|
       return true if contains_all?(arr, x)
+      
+      
     end
     false
   end
+
+def draw
+if no_int(@board)==false
+    return true
+else
+    return false
+end
+end
+
+def no_int(arra)
+    flag= false
+   i=0
+  
+    while arra.length > i
+        j=0
+        while arra.length > j
+            flag=true if arra[i][j].is_a?(Integer)
+            j+=1
+        end
+        i+=1
+    end
+    
+return flag
+end
 
   def contains_all?(aaa, bbb)
     bbb.uniq.all? { |x| aaa.count(x) >= bbb.count(x) }
