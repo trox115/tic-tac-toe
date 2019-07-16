@@ -1,5 +1,7 @@
 class Board
-  attr_accessor :board, :board_numbers
+  attr_accessor :board
+  attr_reader :board_numbers
+  attr_reader :winning
   def initialize
     @board_numbers = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     @board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -70,7 +72,8 @@ class Board
 end
 
 class Game
-    attr_accessor :players, :board, :symbols, :turn_toplay
+    attr_accessor :players, :board, :turn_toplay
+    attr_reader :symbols
     def initialize
       @board = Board.new
       @players = []
@@ -115,7 +118,7 @@ class Game
     def next_move
         puts "Turn to: #{@players[@turn_toplay]}, insert a digit"
         played = gets.chomp
-        if played.to_i != 0
+        if played.to_i != 0 && played.to_i < 10
             valid = @board.choose(played.to_i, @symbols[@turn_toplay])
         else
             puts banner_msg("Invalid entry!")
