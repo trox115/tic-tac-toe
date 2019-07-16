@@ -81,7 +81,35 @@ class Game
     @board.board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     @playermoves = [[], []]
   end
+  def ask_playagain
+    loop do
+        puts 'Do you want to play again? Y/N'
+        playagain_ans = gets.chomp
+        if playagain_ans.upcase == 'Y'
+          return true
+        elsif playagain_ans.upcase == 'N'
+          return false
+        else
+          puts 'Invalid Response'
+        end
+    end
+  end
+  def ask_sameplayers
+    loop do
+        puts 'Play with the same Players Y/N'
+        sameplayers_ans = gets.chomp
+        if sameplayers_ans.upcase == 'Y'
+            return true
+        elsif sameplayers_ans.upcase == 'N'
+            return false
+        else
+            puts 'Invalid Response'
+        end
+      end
+  end
+
 end
+
 
 game = Game.new
 
@@ -100,38 +128,10 @@ loop do
     game.play
   end
 
-  ask_playagain = true
-  while ask_playagain
-    puts 'Do you want to play again? Y/N'
-    playagain_ans = gets.chomp
-    if playagain_ans.upcase == 'Y'
-      ask_playagain = false
-      playagain = true
-      break
-    elsif playagain_ans.upcase == 'N'
-      playagain = false
-      ask_playagain = false
-      break
-    else
-      puts 'Invalid Response'
-    end
-  end
+  playagain = game.ask_playagain()
+  
   next unless playagain == true
 
-  ask_sameplayers = true
-  while ask_sameplayers
-    puts 'Play with the same Players Y/N'
-    sameplayers_ans = gets.chomp
-    if sameplayers_ans.upcase == 'Y'
-      ask_sameplayers = false
-      sameplayers = true
-      break
-    elsif sameplayers_ans.upcase == 'N'
-      sameplayers = false
-      ask_sameplayers = false
-      break
-    else
-      puts 'Invalid Response'
-    end
-  end
+  sameplayers = game.ask_sameplayers()
+  
 end
