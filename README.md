@@ -18,3 +18,7 @@ this project was achived thanks to
 
 * /bin/main.rb that contains the **executable file**
 * /lib/logic.rb that contains the **the logic of the game**
+
+# Live Version
+
+We have a live version in [Repl.it](https://repl.it/@AntonioFernand3/Tic-Tac-Toe) go an play Tic-Tac-Toe!!
