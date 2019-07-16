@@ -89,11 +89,9 @@ sameplayers = false
 playagain = true
 
 loop do
-  if playagain == false
-    break
-  end
+  break if playagain == false
 
-  if sameplayers == true 
+  if sameplayers == true
     game.reset_board
     game.play
   else
@@ -102,39 +100,38 @@ loop do
     game.play
   end
 
-
   ask_playagain = true
   while ask_playagain
-    puts "Do you want to play again? Y/N"
+    puts 'Do you want to play again? Y/N'
     playagain_ans = gets.chomp
-    if playagain_ans.upcase == "Y"
+    if playagain_ans.upcase == 'Y'
       ask_playagain = false
       playagain = true
       break
-    elsif playagain_ans.upcase == "N"
+    elsif playagain_ans.upcase == 'N'
       playagain = false
       ask_playagain = false
       break
     else
-      puts "Invalid Response"
+      puts 'Invalid Response'
     end
   end
-if playagain == true
+  next unless playagain == true
+
   ask_sameplayers = true
   while ask_sameplayers
-    puts "Play with the same Players Y/N"
+    puts 'Play with the same Players Y/N'
     sameplayers_ans = gets.chomp
-    if sameplayers_ans.upcase == "Y"
+    if sameplayers_ans.upcase == 'Y'
       ask_sameplayers = false
       sameplayers = true
       break
-    elsif sameplayers_ans.upcase == "N"
+    elsif sameplayers_ans.upcase == 'N'
       sameplayers = false
       ask_sameplayers = false
       break
     else
-      puts "Invalid Response"
+      puts 'Invalid Response'
     end
   end
 end
-end  
