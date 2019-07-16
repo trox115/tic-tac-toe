@@ -16,8 +16,9 @@ this project was achived thanks to
 
 # The Files
 
-* /bin/main.rb that contains the **executable file**
-* /lib/logic.rb that contains the **the logic of the game**
+* /bin/main.rb that contains the **Logic of the Game**
+* /lib/board.rb contains the implementation of the board class, reponsible of emulating the board **Board Class**
+* /lib/game.rb contains the implementation for the game class, responsible of emulating the game **Game Class**
 
 # Live Version
 
