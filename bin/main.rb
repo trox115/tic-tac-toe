@@ -93,7 +93,7 @@ loop do
     break
   end
 
-  if sameplayers == true
+  if sameplayers == true 
     game.reset_board
     game.play
   else
@@ -119,7 +119,7 @@ loop do
       puts "Invalid Response"
     end
   end
-
+if playagain == true
   ask_sameplayers = true
   while ask_sameplayers
     puts "Play with the same Players Y/N"
@@ -136,4 +136,5 @@ loop do
       puts "Invalid Response"
     end
   end
+end
 end  
